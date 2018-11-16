@@ -50,11 +50,8 @@ jobs:
         keep-history: true
         on:
           branch: master
-      name: "Deploying Codecov report"
-      script: codecov
-after_success:
-  - "sbt coveralls"
-
+      name: "Deploying Coveralls report"
+      script: sbt coveralls
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/
