@@ -10,9 +10,6 @@ node_js:
   - "stable"
   - "10"
   - "9"
-  - "8"
-  - "7"
-  - "6"
 stages:
   - |
     setup
@@ -26,7 +23,7 @@ jobs:
       name: install
       script: 
         - npm i -g typescript@latest
-        - npm i -g codecov
+        - npm i -g coveralls
     - stage: test
       name: "Run all unit tests"
       script: npm run test:all
@@ -51,7 +48,7 @@ jobs:
         on:
           branch: master
       name: "Deploying Coveralls report"
-      script: sbt coveralls
+      script: cat ./coverage/lcov.info | coveralls
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/
