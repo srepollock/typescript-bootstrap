@@ -1,0 +1,77 @@
+{
+  "name": "ts-bootstrap",
+  "version": "0.0.0-development",
+  "description": "A TypeScript bootstrap project.",
+  "main": "src/index.ts",
+  "scripts": {
+    "build": "tsc",
+    "bundle": "npm run build",
+    "clean": "rm -rf build/* dist/* docs/* lib/*",
+    "commit": "git-cz",
+    "coverage": "nyc report --reportertext-lcov > coverage.lcov && codecov",
+    "docs": "typedoc --excludeExternals --externalPattern \"node_modules/**\" --ignoreCompilerErrors --name Divine\\ Engine\\ API --out docs --mode file --module commonjs --target ES6 --readme none src/*",
+    "lint": "tslint src/**/*.ts -c tslint.json",
+    "prepare": "npm run clean -- npm run lint -- npm run bundle",
+    "postinstall": "setup:all",
+    "semantic-release": "semantic-release",
+    "setup:all": "npm run setup:semantic-release -- npm run setup:commitizen -- npm run setup:update-package-json",
+    "setup:update-package-json": "sed -i '3s/.*/\"version\": 0.0.0-semantically-released,/' package.json",
+    "setup:commitizen": "commitizen init cz-conventional-changelog --save-dev --save-exact",
+    "setup:semantic-release": "semantic-release-cli setup",
+    "travis-deploy-once": "travis-deploy-once",
+    "test": "mocha --require test/setuptest.js test/**/*.ts",
+    "test:all": "nyc -- npm run test",
+    "watch": "tsc-watch -p . --onSuccess \"npm run-script bundle\" --onFailure 'echo \"tsc failed\"'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/srepollock/ts-bootstrap.git"
+  },
+  "keywords": [
+    "typescript",
+    "nodejs",
+    "parcel",
+    "babel",
+    "instanbul",
+    "codecov"
+  ],
+  "author": "Spencer Pollock <spencer@spollock.ca>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/srepollock/ts-bootstrap/issues"
+  },
+  "homepage": "https://github.com/srepollock/ts-bootstrap#readme",
+  "dependencies": {
+    "nyc": "^13.1.0",
+    "semantic-release-cli": "^4.0.9",
+    "tslint": "^5.11.0",
+    "typedoc": "^0.13.0",
+    "typescript": "^3.1.6"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.1.6",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
+    "@babel/plugin-transform-arrow-functions": "^7.0.0",
+    "@babel/plugin-transform-runtime": "^7.1.0",
+    "@babel/preset-env": "^7.1.6",
+    "@babel/preset-typescript": "^7.1.0",
+    "@babel/register": "^7.0.0",
+    "@types/chai": "^4.1.7",
+    "@types/mocha": "^5.2.5",
+    "babel": "^6.23.0",
+    "chai": "^4.2.0",
+    "commitizen": "^3.0.4",
+    "cz-conventional-changelog": "^2.1.0",
+    "mocha": "^5.2.0",
+    "parcel-bundler": "^1.10.3",
+    "semantic-release": "^15.12.0",
+    "travis-deploy-once": "^5.0.9",
+    "tsc-watch": "^1.0.30"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}

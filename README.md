@@ -13,10 +13,11 @@ Now remove this part and fill out the rest with your unique project information.
 
 # Project Title
 
-[One Paragraph of project description goes here]
+[A short project description goes here. Up to a paragraph but no more.]
 
 [![TypeScript](https://badges.frapsoft.com/typescript/version/typescript-next.svg?v=101)](https://github.com/ellerbrock/typescript-badges/)
 [![Open Source Love](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
+[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
 Master: [![Build Status](https://travis-ci.org/srepollock/ts-bootstrap.svg?branch=master)](https://travis-ci.org/srepollock/ts-bootstrap) [![Codecov](https://codecov.io/gh/srepollock/ts-bootstrap/branch/master/graph/badge.svg)](https://codecov.io/gh/srepollock/ts-bootstrap/branch/master/graph/badge.svg)  
 
