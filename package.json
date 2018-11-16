@@ -8,7 +8,7 @@
     "bundle": "npm run build",
     "clean": "rm -rf build/* dist/* docs/* lib/*",
     "commit": "git add --all && git-cz",
-    "coverage": "nyc report --reportertext-lcov > coverage.lcov && codecov",
+    "coverage": "nyc report --reportertext-lcov > coverage.lcov",
     "docs": "typedoc --excludeExternals --externalPattern \"node_modules/**\" --ignoreCompilerErrors --name Divine\\ Engine\\ API --out docs --mode file --module commonjs --target ES6 --readme none src/*",
     "lint": "tslint src/**/*.ts -c tslint.json",
     "prepare": "npm run clean -- npm run lint -- npm run bundle",
