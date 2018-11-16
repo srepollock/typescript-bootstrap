@@ -17,7 +17,8 @@ stages:
   - setup
   - test
   - document
-  - deploy
+  - name: deploy
+  if: branch = master
 jobs:
   include:
     - stage: setup
@@ -30,13 +31,13 @@ jobs:
       script: npm run test:all
       name: "Run smoketests"
       script: npm run smoketest
-    - stage: document
+    - stage: coverage
       name: "Generate coverage report"
       script: npm run coverage
+    - stage: document
       name: "Generate API documents"
       script: npm run docs
     - stage: deploy
-    if: branch = master
       name: "Deploying new project release with semantic-release in CI"
       script: npm run travis-deploy-once "npm run semantic-release"
       name: "Deploy Github Pages"
@@ -50,6 +51,9 @@ jobs:
           branch: master
       name: "Deploying Codecov report"
       script: codecov
+after_success:
+  - "sbt coveralls"
+
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/
