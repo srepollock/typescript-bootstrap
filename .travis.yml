@@ -14,11 +14,12 @@ node_js:
   - "7"
   - "6"
 stages:
-  - setup
-  - test
-  - document
-  - name: deploy
-  if: branch = master
+  - |
+    setup
+    test
+    document
+    name: deploy
+    if: branch = master
 jobs:
   include:
     - stage: setup
