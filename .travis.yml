@@ -1,0 +1,57 @@
+language: node_js
+cache:
+  directories:
+    - ~/.npm
+notifications:
+  email: false
+dist: trusty
+sudo: required
+node_js:
+  - "stable"
+  - "10"
+  - "9"
+  - "8"
+  - "7"
+  - "6"
+stages:
+  - setup
+  - test
+  - document
+  - deploy
+jobs:
+  include:
+    - stage: setup
+      name: install
+      script: 
+        - npm i -g typescript@latest
+        - npm i -g codecov
+    - stage: test
+      name: "Run all unit tests"
+      script: npm run test:all
+      name: "Run smoketests"
+      script: npm run smoketest
+    - stage: document
+      name: "Generate coverage report"
+      script: npm run coverage
+      name: "Generate API documents"
+      script: npm run docs
+    - stage: deploy
+    if: branch = master
+      name: "Deploying new project release with semantic-release in CI"
+      script: npm run travis-deploy-once "npm run semantic-release"
+      name: "Deploy Github Pages"
+      script: echo "Deploying GitHub Pages..."
+      deploy:
+        provider: pages
+        skip-cleanup: true
+        github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+        keep-history: true
+        on:
+          branch: master
+      name: "Deploying Codecov report"
+      script: codecov
+branches:
+  except:
+    - /^v\d+\.\d+\.\d+$/
+git:
+  depth: 3
