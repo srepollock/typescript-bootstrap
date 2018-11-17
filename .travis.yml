@@ -29,14 +29,14 @@ jobs:
     - stage: test
       name: "Run all unit tests"
       script: npm run test:all
-      name: "Run smoketests"
       script: npm run smoketest
+      name: "Run smoketests"
     - stage: document
       name: "Generate API documents"
       script: npm run docs
     - stage: deploy
-      name: "Deploy Github Pages"
       script: echo "Deploying GitHub Pages..."
+      name: "Deploy Github Pages"
       deploy:
         provider: pages
         skip-cleanup: true
