@@ -29,9 +29,6 @@ jobs:
       script: npm run test:all
       name: "Run smoketests"
       script: npm run smoketest
-    - stage: coverage
-      name: "Generate coverage report"
-      script: npm run coverage
     - stage: document
       name: "Generate API documents"
       script: npm run docs
@@ -48,7 +45,7 @@ jobs:
         on:
           branch: master
       name: "Deploying Coveralls report"
-      script: cat ./coverage/lcov.info | coveralls
+      script: npm run coverage
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/
