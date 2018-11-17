@@ -42,7 +42,7 @@ jobs:
           branch: master
       script: npm run coverage
     - stage: release
-      script: npm run travis-deploy-once "npm run semantic-release"
+      script: npm run semantic-release
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/
