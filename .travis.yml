@@ -17,6 +17,8 @@ stages:
     document
     name: deploy
     if: branch = master
+    name: release
+    if: branch = master
 jobs:
   include:
     - stage: setup
@@ -33,8 +35,6 @@ jobs:
       name: "Generate API documents"
       script: npm run docs
     - stage: deploy
-      name: "Deploying new project release with semantic-release in CI"
-      script: npm run travis-deploy-once "npm run semantic-release"
       name: "Deploy Github Pages"
       script: echo "Deploying GitHub Pages..."
       deploy:
@@ -46,6 +46,8 @@ jobs:
           branch: master
       name: "Deploying Coveralls report"
       script: npm run coverage
+    - stage: release
+      script: npm run travis-deploy-once "npm run semantic-release"
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/
