@@ -34,6 +34,7 @@ jobs:
       name: "Generate API documents"
       script: npm run docs
     - stage: deploy
+      name: "Deploy Github Pages"
       deploy:
         provider: pages
         skip-cleanup: true
@@ -42,8 +43,9 @@ jobs:
         on:
           branch: master
       script: npm run coverage
-after_success:
-  - npm run travis-deploy-once "npm run semantic-release"
+    - stage: release
+      after_success: 
+        - npm run semantic-release
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/
