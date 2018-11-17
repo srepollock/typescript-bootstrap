@@ -4,16 +4,16 @@
         ".tsx"
     ],
     "include": [
-        "src/*"
+        "src/**/*.ts"
     ],
     "exclude": [
         "dist",
         "docs",
-        "coverage",
         "lib"
     ],
     "reporter": [
-        "html",
+        "text-lcov",
+        "lcov",
         "text-summary"
     ],
     "cache": true,

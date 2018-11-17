@@ -10,33 +10,29 @@ node_js:
   - "stable"
   - "10"
   - "9"
-  - "8"
-  - "7"
-  - "6"
 stages:
-  - setup
-  - test
-  - document
-  - deploy
+  - |
+    setup
+    test
+    document
+    name: deploy
+    if: branch = master
 jobs:
   include:
     - stage: setup
       name: install
       script: 
         - npm i -g typescript@latest
-        - npm i -g codecov
+        - npm i -g coveralls
     - stage: test
       name: "Run all unit tests"
       script: npm run test:all
       name: "Run smoketests"
       script: npm run smoketest
     - stage: document
-      name: "Generate coverage report"
-      script: npm run coverage
       name: "Generate API documents"
       script: npm run docs
     - stage: deploy
-    if: branch = master
       name: "Deploying new project release with semantic-release in CI"
       script: npm run travis-deploy-once "npm run semantic-release"
       name: "Deploy Github Pages"
@@ -48,8 +44,8 @@ jobs:
         keep-history: true
         on:
           branch: master
-      name: "Deploying Codecov report"
-      script: codecov
+      name: "Deploying Coveralls report"
+      script: npm run coverage
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/
