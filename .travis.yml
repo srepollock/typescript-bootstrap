@@ -22,21 +22,17 @@ stages:
 jobs:
   include:
     - stage: setup
-      name: install
       script: 
         - npm i -g typescript@latest
         - npm i -g coveralls
     - stage: test
-      name: "Run all unit tests"
+      name: "Run unit and smoke tests"
       script: npm run test:all
-      name: "Run smoketests"
       script: npm run smoketest
     - stage: document
       name: "Generate API documents"
       script: npm run docs
     - stage: deploy
-      name: "Deploy Github Pages"
-      script: echo "Deploying GitHub Pages..."
       deploy:
         provider: pages
         skip-cleanup: true
@@ -44,7 +40,6 @@ jobs:
         keep-history: true
         on:
           branch: master
-      name: "Deploying Coveralls report"
       script: npm run coverage
     - stage: release
       script: npm run travis-deploy-once "npm run semantic-release"
