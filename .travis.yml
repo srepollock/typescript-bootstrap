@@ -29,6 +29,7 @@ jobs:
       name: "Run unit and smoke tests"
       script: npm run test:all
       script: npm run smoketest
+      name: "Run smoketests"
     - stage: document
       name: "Generate API documents"
       script: npm run docs
