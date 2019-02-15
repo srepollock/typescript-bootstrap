@@ -5,26 +5,26 @@
   "main": "src/index.ts",
   "scripts": {
     "build": "tsc",
-    "bundle": "npm run build",
     "clean": "rm -rf build/* dist/* docs/* lib/*",
     "commit": "git add --all && git-cz",
-    "coverage": "npm run test:coverage && nyc report | coveralls",
-    "docs": "typedoc --excludeExternals --externalPattern \"node_modules/**\" --ignoreCompilerErrors --name Divine\\ Engine\\ API --out docs --mode file --module commonjs --target ES6 --readme none src/*",
+    "coverage": "npm run test && nyc report | coveralls",
+    "docs": "typedoc --excludeExternals --externalPattern \"node_modules/**\" --ignoreCompilerErrors --name $PROJECTNAME --out docs --mode file --module $MODULETYPE --target $TARGET --readme none src/*",
     "lint": "tslint src/**/*.ts -c tslint.json",
-    "prepare": "npm run clean -- npm run lint -- npm run bundle",
+    "prebuild": "npm run lint",
+    "precommit": "npm run lint",
+    "prepare": "npm run clean && npm run build",
     "semantic-release": "semantic-release",
-    "setup:all": "npm run setup:semantic-release -- npm run setup:commitizen -- npm run setup:update-package-json",
+    "setup:all": "npm run setup:semantic-release && npm run setup:commitizen && npm run setup:update-package-json",
     "setup:update-package-json": "sed -i '3s/.*/\"version\": 0.0.0-semantically-released,/' package.json",
     "setup:commitizen": "commitizen init cz-conventional-changelog --save-dev --save-exact",
     "setup:semantic-release": "semantic-release-cli setup",
     "smoketest": "npm run test:all",
     "travis-deploy-once": "travis-deploy-once",
-    "test": "mocha --require test/setuptest.js test/**/*.ts",
-    "test:all": "npm run test",
-    "test:coverage": "nyc mocha --require test/setuptest.js test/**/*.ts",
-    "test:smoke": "npm run test",
-    "test:unit": "npm run test",
-    "watch": "tsc-watch -p . --onSuccess \"npm run-script bundle\" --onFailure 'echo \"tsc failed\"'"
+    "test": "nyc mocha --opts mocha.opts \"test/**/*.spec.{ts,tsx}\" --exit",
+    "test:integration": "mocha --opts mocha.opts \"test/integration/*.spec.{ts,tsx}\" --exit",
+    "test:functional": "mocha --opts mocha.opts \"test/functional/*.spec.{ts,tsx}\" --exit",
+    "test:unit": "mocha --opts mocha.opts \"test/unit/*.spec.{ts,tsx}\" --exit",
+    "watch": "mocha --opts mocha.opts -w \"test/**/*.spec.{ts,tsx}\" --exit"
   },
   "repository": {
     "type": "git",
@@ -33,46 +33,35 @@
   "keywords": [
     "typescript",
     "nodejs",
-    "parcel",
-    "babel",
     "instanbul",
-    "codecov"
+    "codecov",
+    "commitizen",
+    "semantic-release"
   ],
   "author": "Spencer Pollock <spencer@spollock.ca>",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/srepollock/ts-bootstrap/issues"
   },
   "homepage": "https://github.com/srepollock/ts-bootstrap#readme",
   "dependencies": {
-    "semantic-release-cli": "^4.0.9",
+    "semantic-release-cli": "^4.1.0",
     "tslint": "^5.11.0",
     "typedoc": "^0.13.0",
     "typescript": "^3.1.6"
   },
   "devDependencies": {
-    "@babel/core": "^7.1.6",
-    "@babel/plugin-proposal-class-properties": "^7.1.0",
-    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
-    "@babel/plugin-transform-arrow-functions": "^7.0.0",
-    "@babel/plugin-transform-runtime": "^7.1.0",
-    "@babel/preset-env": "^7.1.6",
-    "@babel/preset-typescript": "^7.1.0",
-    "@babel/register": "^7.0.0",
     "@types/chai": "^4.1.7",
-    "@types/mocha": "^5.2.5",
-    "babel": "^6.23.0",
-    "babel-plugin-istanbul": "^5.1.0",
+    "@types/mocha": "^5.2.6",
     "chai": "^4.2.0",
     "commitizen": "^3.0.4",
     "coveralls": "^3.0.2",
     "cz-conventional-changelog": "^2.1.0",
     "mocha": "^5.2.0",
-    "nyc": "^13.1.0",
-    "parcel-bundler": "^1.10.3",
+    "nyc": "^13.3.0",
     "semantic-release": "^15.12.0",
     "travis-deploy-once": "^5.0.9",
-    "tsc-watch": "^1.0.30"
+    "ts-node": "^8.0.2"
   },
   "config": {
     "commitizen": {
