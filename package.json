@@ -8,7 +8,7 @@
     "clean": "rm -rf build/* dist/* docs/* lib/*",
     "commit": "git add --all && git-cz",
     "coverage": "nyc report | coveralls",
-    "docs": "typedoc --excludeExternals --externalPattern \"node_modules/**\" --ignoreCompilerErrors --name $PROJECTNAME --out docs --mode file --module $MODULETYPE --target $TARGET --readme none src/*",
+    "docs": "typedoc --excludeExternals --externalPattern \"node_modules/**\" --ignoreCompilerErrors --name TypeScript\\ Bootstrap --out docs/ --mode file --module umd --target ESNEXT --readme none src/*",
     "lint": "tslint src/**/*.ts -c tslint.json",
     "prebuild": "npm run lint",
     "precommit": "npm run lint",
