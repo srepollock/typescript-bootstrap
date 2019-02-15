@@ -26,6 +26,13 @@ deploy:
   on:
     branch: master
     condition: $NODE_ENV = production
+  provider: npm
+  skip-cleanup: true
+  email: $EMAIL
+  api_key: $NPM_TOKEN
+  on:
+      tags: true
+      branch: master
 branches:
   only:
     - master
