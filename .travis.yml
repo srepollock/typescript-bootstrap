@@ -8,13 +8,10 @@ dist: trusty
 sudo: required
 node_js:
   - "stable"
-  - "10"
-  - "9"
 env:
     - BRANCH=$(if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then echo $TRAVIS_BRANCH; else echo $TRAVIS_PULL_REQUEST_BRANCH; fi)
     - NODE_ENV=$(if [ "$BRANCH" == "master" ]; then echo production; else echo development; fi)
 before_install:
-  - npm i -g typescript@latest
   - npm i -g coveralls
 install:
   - npm install
@@ -25,7 +22,6 @@ script:
 after_success: 
   - npm run semantic-release
 deploy:
-  skip_cleanup: true
   provider: pages
   skip-cleanup: true
   github-token: $GH_TOKEN
