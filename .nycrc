@@ -12,11 +12,9 @@
         "lib"
     ],
     "reporter": [
-        "text-lcov",
+        "html",
         "lcov",
         "text-summary"
     ],
-    "cache": true,
-    "sourceMap": false,
-    "instrument": false
+    "all": true
 }
