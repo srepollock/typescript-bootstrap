@@ -12,6 +12,7 @@
         "lib"
     ],
     "reporter": [
+        "text-lcov",
         "text-summary"
     ],
     "all": true
