@@ -1,5 +1,5 @@
-import { add } from "../src";
 import { expect } from "chai";
+import { add } from "../src";
 
 describe("Add test", () => {
     it("should add 5 + 5 and equal 10", () => {

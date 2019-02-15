@@ -13,10 +13,7 @@
     ],
     "reporter": [
         "text-lcov",
-        "lcov",
         "text-summary"
     ],
-    "cache": true,
-    "sourceMap": false,
-    "instrument": false
+    "all": true
 }

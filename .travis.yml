@@ -1,53 +1,44 @@
 language: node_js
 cache:
-  directories:
-    - ~/.npm
+    directories:
+        ~/.npm
 notifications:
   email: false
 dist: trusty
 sudo: required
 node_js:
   - "stable"
-  - "10"
-  - "9"
-stages:
-  - |
-    setup
-    test
-    document
-    name: deploy
-    if: branch = master
-    name: release
-    if: branch = master
-jobs:
-  include:
-    - stage: setup
-      script: 
-        - npm i -g typescript@latest
-        - npm i -g coveralls
-    - stage: test
-      name: "Run unit and smoke tests"
-      script: npm run test:all
-      script: npm run smoketest
-      name: "Run smoketests"
-    - stage: document
-      name: "Generate API documents"
-      script: npm run docs
-    - stage: deploy
-      name: "Deploy Github Pages"
-      deploy:
-        provider: pages
-        skip-cleanup: true
-        github-token: $GH_TOKEN
-        keep-history: true
-        on:
-          branch: master
-      script: npm run coverage
-    - stage: release
-      after_success: 
-        - npm run semantic-release
+  - 10
+env:
+    - BRANCH=$(if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then echo $TRAVIS_BRANCH; else echo $TRAVIS_PULL_REQUEST_BRANCH; fi) NODE_ENV=$(if [ "$BRANCH" == "master" ]; then echo production; else echo development; fi)
+before_install:
+  - npm i -g coveralls
+install:
+  - npm install
+script:
+  - npm run test
+  - npm run docs
+  - npm run coverage
+after_success: 
+  - npm run semantic-release
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GH_TOKEN
+  keep-history: true
+  on:
+    branch: master
+    condition: $NODE_ENV = production
+  provider: npm
+  skip-cleanup: true
+  email: $EMAIL
+  api_key: $NPM_TOKEN
+  on:
+      tags: true
+      branch: master
 branches:
-  except:
-    - /^v\d+\.\d+\.\d+$/
+  only:
+    - master
 git:
-  depth: 3
+  depth: 1 
+  quiet: true
