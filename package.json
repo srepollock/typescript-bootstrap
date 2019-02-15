@@ -17,8 +17,6 @@
     "setup:update-package-json": "sed -i '3s/.*/\"version\": 0.0.0-semantically-released,/' package.json",
     "setup:commitizen": "commitizen init cz-conventional-changelog --save-dev --save-exact",
     "setup:semantic-release": "semantic-release-cli setup",
-    "smoketest": "npm run test:all",
-    "travis-deploy-once": "travis-deploy-once",
     "test": "nyc mocha --opts mocha.opts \"test/**/*.spec.{ts,tsx}\" --exit",
     "test:integration": "mocha --opts mocha.opts \"test/integration/*.spec.{ts,tsx}\" --exit",
     "test:functional": "mocha --opts mocha.opts \"test/functional/*.spec.{ts,tsx}\" --exit",
