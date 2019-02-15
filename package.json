@@ -7,7 +7,7 @@
     "build": "tsc",
     "clean": "rm -rf build/* dist/* docs/* lib/*",
     "commit": "git add --all && git-cz",
-    "coverage": "nyc report | coveralls",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
     "docs": "typedoc --excludeExternals --externalPattern \"node_modules/**\" --ignoreCompilerErrors --name TypeScript\\ Bootstrap --out docs/ --mode file --module umd --target ESNEXT --readme none src/*",
     "lint": "tslint src/**/*.ts -c tslint.json",
     "prebuild": "npm run lint",
