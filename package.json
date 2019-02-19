@@ -1,5 +1,5 @@
 {
-  "name": "ts-bootstrap",
+  "name": "typescript-bootstrap",
   "version": "0.0.0-semantically-released",
   "description": "A TypeScript bootstrap project.",
   "main": "src/index.ts",
@@ -25,7 +25,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/srepollock/ts-bootstrap.git"
+    "url": "https://github.com/srepollock/typescript-bootstrap.git"
   },
   "keywords": [
     "typescript",
@@ -38,9 +38,9 @@
   "author": "Spencer Pollock <spencer@spollock.ca>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/srepollock/ts-bootstrap/issues"
+    "url": "https://github.com/srepollock/typescript-bootstrap/issues"
   },
-  "homepage": "https://github.com/srepollock/ts-bootstrap#readme",
+  "homepage": "http://spollock.ca/typescript-bootstrap/",
   "dependencies": {
     "@types/chai": "^4.1.7",
     "@types/mocha": "^5.2.6",
