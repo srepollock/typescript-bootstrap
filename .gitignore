@@ -64,3 +64,6 @@ typings/
 lib/
 dist/
 docs/
+
+# Codecov
+coverage.lcov

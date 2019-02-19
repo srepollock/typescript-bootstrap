@@ -18,8 +18,8 @@ install:
 script:
   - npm run test
   - npm run docs
-  - npm run coverage
 after_success: 
+  - npm run coverage
   - npm run semantic-release
 deploy:
   provider: pages
