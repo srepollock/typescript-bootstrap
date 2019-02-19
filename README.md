@@ -19,7 +19,7 @@ Now remove this part and fill out the rest with your unique project information.
 [![Open Source Love](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
-Master: [![Build Status](https://travis-ci.com/srepollock/ts-bootstrap.svg?branch=master)](https://travis-ci.com/srepollock/ts-bootstrap) [![Coverage Status](https://coveralls.io/repos/github/srepollock/ts-bootstrap/badge.svg?branch=master)](https://coveralls.io/github/srepollock/ts-bootstrap?branch=master)
+Master: [![Build Status](https://travis-ci.org/srepollock/ts-bootstrap.svg?branch=master)](https://travis-ci.org/srepollock/ts-bootstrap) [![Coverage Status](https://coveralls.io/repos/github/srepollock/ts-bootstrap/badge.svg?branch=master)](https://coveralls.io/github/srepollock/ts-bootstrap?branch=master)
 
 ## Getting Started
 
@@ -77,13 +77,11 @@ Add additional notes about how to deploy this on a live system
 
 ## Built With
 
-* [
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+* [NodeJS](http://www.nodejs.com)
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+Please read CONTRIBUTING.md for details on our code of conduct, and the process for submitting pull requests to us.
 
 ## Versioning
 
@@ -91,7 +89,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **YOU** - [your profile](https://github.com/yourprofile)
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
@@ -104,6 +102,7 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 * Hat tip to anyone whose code was used
 * Inspiration
 * etc
+* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
 
 
 > Created by [YOU!] (@[your-github-username]). 
