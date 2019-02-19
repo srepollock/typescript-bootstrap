@@ -67,3 +67,5 @@ docs/
 
 # Codecov
 coverage.lcov
+
+package.json.orig
