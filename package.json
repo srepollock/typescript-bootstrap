@@ -1,6 +1,6 @@
 {
   "name": "typescript-bootstrap",
-  "version": "0.0.0-semantically-released",
+  "version": "1.0.2",
   "description": "A TypeScript bootstrap project.",
   "main": "src/index.ts",
   "scripts": {
