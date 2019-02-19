@@ -1,6 +1,6 @@
 {
   "name": "ts-bootstrap",
-  "version": "0.0.0-semantically-released",
+  "version": "0.0.0-development",
   "description": "A TypeScript bootstrap project.",
   "main": "src/index.ts",
   "scripts": {
@@ -14,7 +14,7 @@
     "precommit": "npm run lint",
     "semantic-release": "semantic-release",
     "setup:all": "npm run setup:semantic-release && npm run setup:commitizen && npm run setup:update-package-json",
-    "setup:update-package-json": "sed -i .orig '3s/.*/  \"version\": \"0.0.0-semantically-released\",/' package.json",
+    "setup:update-package-json": "sed -i .orig '3s/.*/  \"version\": \"0.0.0-semantically-released,\"/' package.json",
     "setup:commitizen": "commitizen init cz-conventional-changelog --save-dev --save-exact",
     "setup:semantic-release": "semantic-release-cli setup",
     "test": "nyc mocha --opts mocha.opts \"test/**/*.spec.{ts,tsx}\" --exit",
