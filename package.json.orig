@@ -1,6 +1,6 @@
 {
-  "name": "typescript-bootstrap",
-  "version": "0.0.0-semantically-released",
+  "name": "ts-bootstrap",
+  "version": "0.0.0-development",
   "description": "A TypeScript bootstrap project.",
   "main": "src/index.ts",
   "scripts": {
@@ -14,7 +14,7 @@
     "precommit": "npm run lint",
     "semantic-release": "semantic-release",
     "setup:all": "npm run setup:semantic-release && npm run setup:commitizen && npm run setup:update-package-json",
-    "setup:update-package-json": "sed -i .orig '3s/.*/  \"version\": \"0.0.0-semantically-released\",/' package.json",
+    "setup:update-package-json": "sed -i .orig '3s/.*/  \"version\": \"0.0.0-semantically-released,\"/' package.json",
     "setup:commitizen": "commitizen init cz-conventional-changelog --save-dev --save-exact",
     "setup:semantic-release": "semantic-release-cli setup",
     "test": "nyc mocha --opts mocha.opts \"test/**/*.spec.{ts,tsx}\" --exit",
@@ -25,7 +25,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/srepollock/typescript-bootstrap.git"
+    "url": "https://github.com/srepollock/ts-bootstrap.git"
   },
   "keywords": [
     "typescript",
@@ -38,9 +38,9 @@
   "author": "Spencer Pollock <spencer@spollock.ca>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/srepollock/typescript-bootstrap/issues"
+    "url": "https://github.com/srepollock/ts-bootstrap/issues"
   },
-  "homepage": "http://spollock.ca/typescript-bootstrap/",
+  "homepage": "https://github.com/srepollock/ts-bootstrap#readme",
   "dependencies": {
     "@types/chai": "^4.1.7",
     "@types/mocha": "^5.2.6",
