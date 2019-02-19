@@ -34,7 +34,6 @@ deploy:
   email: $EMAIL
   api_key: $NPM_TOKEN
   on:
-      tags: true
       branch: master
 branches:
   only:
