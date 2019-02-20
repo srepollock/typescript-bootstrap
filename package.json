@@ -9,7 +9,7 @@
     "commit": "git add --all && git-cz",
     "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
     "docs": "typedoc --excludeExternals --externalPattern \"node_modules/**\" --ignoreCompilerErrors --name TypeScript\\ Bootstrap --out docs/ --mode file --module umd --target ESNEXT --readme none src/*",
-    "lint": "tslint src/**/*.ts -c tslint.json",
+    "lint": "tslint src/**/*.ts",
     "prebuild": "npm run lint",
     "precommit": "npm run lint",
     "semantic-release": "semantic-release",
@@ -53,7 +53,6 @@
     "semantic-release": "^15.13.3",
     "semantic-release-cli": "^4.1.0",
     "ts-node": "^8.0.2",
-    "tslint": "^5.11.0",
     "typedoc": "^0.13.0",
     "typescript": "^3.1.6"
   },
@@ -62,5 +61,24 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "nyc": {
+    "extension": [
+        ".ts",
+        ".tsx"
+    ],
+    "include": [
+        "src/**/*.ts"
+    ],
+    "exclude": [
+        "dist",
+        "docs",
+        "lib"
+    ],
+    "reporter": [
+        "text-lcov",
+        "text-summary"
+    ],
+    "all": true
   }
 }

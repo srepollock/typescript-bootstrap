@@ -1,3 +1,7 @@
+# Node
+package.json.orig
+package-lock.json
+
 # Logs
 logs
 *.log
@@ -16,6 +20,7 @@ lib-cov
 
 # Coverage directory used by tools like istanbul
 coverage
+coverage.lcov
 
 # nyc test coverage
 .nyc_output
@@ -67,5 +72,3 @@ docs/
 
 # Codecov
 coverage.lcov
-
-package.json.orig

@@ -2,7 +2,6 @@
     "extends": [
         "tslint:recommended"
     ],
-    "jsRules": {},
     "rules": {
         "align": true,
         "array-type": false,
