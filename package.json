@@ -84,18 +84,6 @@
         "branches": 50,
         "lines": 70,
         "statements": 50
-      },
-      "./src/math": {
-        "functions": 100,
-        "branches": 100,
-        "lines": 100,
-        "statements": 100
-      },
-      "./src/helper": {
-        "functions": 100,
-        "branches": 100,
-        "lines": 100,
-        "statements": 100
       }
     },
     "preset": "ts-jest",
