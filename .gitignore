@@ -72,3 +72,5 @@ docs/
 
 # Codecov
 coverage.lcov
+
+id_rsa*
