@@ -1,4 +1,4 @@
-name: Node.js CI/CD
+name: Publish, Coverage and Document
 
 on:
   push:
@@ -47,9 +47,9 @@ jobs:
           npm install
           npm run coverage
 
-  gh_pages:
+  docs:
     needs: build_test
-    name: Deploys the README to GitHub Pages
+    name: Builds the Documentation from TypeDoc
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -57,11 +57,9 @@ jobs:
       - uses: actions/setup-node@master
         with:
           version: 12
-      - name: GitHub Pages Deploy
-        uses: maxheld83/ghpages@v0.2.1
-        env:
-          BUILD_DIR: "gh_pages"
-          GH_PAT: ${{secrets.GITHUB_TOKEN}}
+      - name: Run docs
+        run: |
+          npm run docs
 
   publish_npm:
     needs: [build_test, coverage, docs]

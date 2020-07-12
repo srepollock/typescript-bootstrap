@@ -1,5 +1,4 @@
-name: Build, Test, Coverage, Document Checks
-
+name: Build and Test
 on:
   pull_request:
     branches:
