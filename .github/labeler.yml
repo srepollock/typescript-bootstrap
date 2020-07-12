@@ -1,0 +1,10 @@
+test:
+    - test/**/*.spec.ts
+source:
+    - src/**/*.ts
+docs:
+    - README.md
+    - LICENSE
+    - wiki/**/*
+    - docs/**/*
+    - *.md

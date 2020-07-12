@@ -1,0 +1,1 @@
+{"code":"/**\r\n * A simple function to add two numbers together and return the sum.\r\n * @param  {number} x first number\r\n * @param  {number} y second number\r\n * @returns number sum\r\n */\r\nexport function add(x, y) {\r\n    return x + y;\r\n}\r\n","references":[]}

@@ -6,8 +6,9 @@
   "module": "./lib/main.es.js",
   "types": "./lib/index.d.ts",
   "scripts": {
+    "start": "node .",
     "build": "tsc",
-    "bundle": "npm run build; rollup-c",
+    "bundle": "npm run build; rollup --config rollup.config.js",
     "clean": "rm -rf build/* dist/* docs/* lib/*",
     "commit": "git add --all && git-cz",
     "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
@@ -24,7 +25,7 @@
     "test:functional": "jest test/functional/**/*\\.spec\\.[jt]s",
     "test:integration": "jest test/integration/**/*\\.spec\\.[jt]s",
     "test:unit": "jest test/unit/**/*\\.spec\\.[jt]s",
-    "watch": "tsc; rollup -c --watch.exclude \"node_modules/**\" "
+    "watch": "tsc; rollup --config rollup.config.js --watch.exclude \"node_modules/**\" "
   },
   "repository": {
     "type": "git",
@@ -33,9 +34,10 @@
   "keywords": [
     "typescript",
     "nodejs",
+    "template",
+    "bootstrap",
     "commitizen",
-    "semantic-release",
-    "codecov"
+    "semantic-release"
   ],
   "author": "Spencer Pollock <spencer@spollock.ca>",
   "license": "MIT",
@@ -45,8 +47,9 @@
   "homepage": "http://spollock.ca/typescript-bootstrap/",
   "dependencies": {},
   "devDependencies": {
-    "@types/jest": "^24.0.18",
-    "@types/node": "^12.7.2",
+    "@joseph184/rollup-plugin-node-builtins": "^2.1.4",
+    "@types/jest": "^26.0.4",
+    "@types/node": "*",
     "@typescript-eslint/eslint-plugin": "^2.0.0",
     "@typescript-eslint/eslint-plugin-tslint": "^2.0.0",
     "@typescript-eslint/parser": "^2.0.0",
@@ -64,8 +67,8 @@
     "semantic-release-cli": "^4.1.0",
     "ts-jest": "^24.0.2",
     "tslint-to-eslint-config": "^0.2.4",
-    "typedoc": "^0.13.0",
-    "typescript": "^3.5.3"
+    "typedoc": "^0.17.8",
+    "typescript": "^3.9.6"
   },
   "config": {
     "commitizen": {
@@ -97,12 +100,11 @@
     ],
     "verbose": true,
     "collectCoverageFrom": [
-        "<rootDir>/src/"
+      "<rootDir>/src/"
     ],
     "coveragePathIgnorePatterns": [
       "<rootDir>/node_modules/"
     ],
-    "testPathIgnorePatterns": [
-    ]
+    "testPathIgnorePatterns": []
   }
 }

@@ -1,0 +1,65 @@
+name: Build, Test, Coverage, Document Checks
+
+on:
+  pull_request:
+    branches:
+      - master
+      - feature/*
+      - hotfix/*
+
+jobs:
+  build_test:
+    name: Build and test on node ${{ matrix.node_version }} and ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        node_version: 
+          - 11
+          - 12
+          - 14
+        os: 
+          - macOS-latest
+          - ubuntu-latest
+          - windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+      - name: Use Node.js ${{ matrix.node_version }}
+        uses: actions/setup-node@master
+        with:
+          version: ${{ matrix.node_version }}
+      - run: |
+          npm install
+          npm run build
+          npm run test
+  
+  coverage:
+    needs: build_test
+    name: Run coverage on Coveralls
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+      - uses: actions/setup-node@master
+        with:
+          version: 12
+      - name: Install codecov
+        run: |
+          npm install -g codecov
+          npm install
+          npm run coverage
+
+  docs:
+    needs: build_test
+    name: Builds and deploys documentation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+      - uses: actions/setup-node@master
+        with:
+          version: 12
+      - name: Build Documentation
+        run: |
+          npm install
+          npm run docs
