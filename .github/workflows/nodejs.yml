@@ -32,34 +32,3 @@ jobs:
           npm install
           npm run build
           npm run test
-  
-  coverage:
-    needs: build_test
-    name: Run coverage on Coveralls
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@master
-      - uses: actions/setup-node@master
-        with:
-          version: 12
-      - name: Install codecov
-        run: |
-          npm install -g codecov
-          npm install
-          npm run coverage
-
-  docs:
-    needs: build_test
-    name: Builds and deploys documentation
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@master
-      - uses: actions/setup-node@master
-        with:
-          version: 12
-      - name: Build Documentation
-        run: |
-          npm install
-          npm run docs

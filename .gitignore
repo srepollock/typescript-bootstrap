@@ -72,5 +72,6 @@ docs/
 
 # Codecov
 coverage.lcov
+.nyc_output/*
 
 id_rsa*
