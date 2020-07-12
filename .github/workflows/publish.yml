@@ -15,7 +15,7 @@ jobs:
       - name: Use Node.js ${{ matrix.node_version }}
         uses: actions/setup-node@master
         with:
-          version: ${{ matrix.node_version }}
+          node-version: ${{ matrix.node_version }}
       - run: |
           npm install
           npm run build
@@ -30,7 +30,7 @@ jobs:
         uses: actions/checkout@master
       - uses: actions/setup-node@master
         with:
-          version: 12
+          node-version: 12
       - name: Install codecov
         run: |
           npm install -g codecov
@@ -46,9 +46,10 @@ jobs:
         uses: actions/checkout@master
       - uses: actions/setup-node@master
         with:
-          version: 12
-      - name: Run docs
+          node-version: 12
+      - name: Compile Documentation
         run: |
+          npm install
           npm run docs
 
   publish_npm:
@@ -59,7 +60,7 @@ jobs:
         uses: actions/checkout@master
       - uses: actions/setup-node@master
         with: 
-          version: 12
+          node-version: 12
           registry-url: https://registry.npmjs.org/
       - name: Update package version
         run: |
@@ -77,7 +78,7 @@ jobs:
         uses: actions/checkout@master
       - uses: actions/setup-node@master
         with:
-          version: 12
+          node-version: 12
           registry-url: https://npm.pkg.github.com
       - name: Update package version
         run: |
