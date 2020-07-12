@@ -3,7 +3,7 @@ name: Build, Test, Coverage, Document Checks
 on:
   pull_request:
     branches:
-      - master
+      - main
       - feature/*
       - hotfix/*
 
