@@ -1,6 +1,6 @@
 Jenkinsfile (Declarative Pipeline)
 pipeline {
-    agent { docker { image 'node:6.3' } }
+    agent { docker { image 'node:lts-alpine' } }
     stages {
         stage('build') {
             steps {
