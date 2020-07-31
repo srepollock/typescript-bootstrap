@@ -8,7 +8,7 @@ pipeline {
                 sh 'npm build'
                 sh 'npm bundle'
             }
-        },
+       }
         stage('test') {
             steps {
                 sh 'npm bundle'
