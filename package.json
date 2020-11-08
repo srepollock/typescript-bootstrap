@@ -45,9 +45,7 @@
     "url": "https://github.com/srepollock/typescript-bootstrap/issues"
   },
   "homepage": "http://spollock.ca/typescript-bootstrap/",
-  "dependencies": {
-    "rollup-plugin-node-resolve": "^5.2.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@joseph184/rollup-plugin-node-builtins": "^2.1.4",
     "@types/jest": "^26.0.4",
